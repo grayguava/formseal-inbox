@@ -28,12 +28,12 @@ jobs:
       - name: Update version.py
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          sed -i "s/VERSION = \".*\"/VERSION = \"$VERSION\"/" fsi/commands/general/version.py
+          sed -i "s/VERSION = \"[^\"]*\"/VERSION = \"$VERSION\"/" fsi/commands/general/version.py
 
       - name: Update pyproject.toml
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          sed -i "s/version = \".*\"/version = \"$VERSION\"/" pyproject.toml
+          sed -i "s/version = \"[^\"]*\"/version = \"$VERSION\"/" pyproject.toml
 
       - name: Commit changes
         run: |
